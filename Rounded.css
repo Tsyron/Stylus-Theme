@@ -1,0 +1,70 @@
+/* ==UserStyle==
+@name           Stylus - Rounded
+@author         Tsyron
+@namespace      https://github.com/Tsyron/Stylus-Theme
+@version        1.0.0
+@license        GPLv3
+@preprocessor   stylus
+
+==/UserStyle== */
+@-moz-document url-prefix("moz-extension://"),
+url-prefix("chrome-extension://") {
+
+    input,
+    select,
+    button,
+    textarea,
+    body,
+    #help-popup,
+    #stylus-popup {
+        border-radius: 6px !important; }
+
+    #message-box.note > div,
+    #message-box-title,
+    .title,
+    #options-title {
+        border-radius: 6px 6px 0 0 !important; }
+
+    #injection-order-button,
+    .split-btn-pedal,
+    #searchMode {
+        border-radius: 0 6px 6px 0 !important; }
+
+    #message-box-buttons,
+    #options {
+        border-radius: 0 0 6px 6px !important; }
+
+    #save-button,
+    #manage-options-button,
+    #file-all-styles,
+    #search,
+    #popup-manage-button,
+    #find-styles-btn {
+        border-radius: 6px 0 0 6px !important; }
+
+    /* Pop-up */
+    .split-btn-menu {
+        border-radius: 6px !important;
+        background: #343434;
+        border: 1px solid #666; }
+
+    .split-btn-menu > :hover {
+        background-color: hsla(180, 0%, 73%, .25); }
+
+    /* Seperator */
+    #header-resizer {
+        border: none !important; }
+
+    #header {
+        box-shadow: none !important; }
+
+    #header-resizer::after {
+        border-right: none !important; }
+
+    /* Options Border Removed */
+    body {
+        border: 0px; !important}
+
+    /* Number on Left Side */
+    input[type="number"] {
+        text-align: left; !important} }
