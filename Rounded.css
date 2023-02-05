@@ -2,7 +2,7 @@
 @name           Stylus - Rounded
 @author         Tsyron
 @namespace      https://github.com/Tsyron/Stylus-Theme
-@version        1.0.0
+@version        1.0.1
 @license        GPLv3
 @preprocessor   stylus
 
@@ -16,10 +16,11 @@ url-prefix("chrome-extension://") {
     textarea,
     body,
     #help-popup,
-    #stylus-popup {
+    #stylus-popup,
+    #message-box > div,
+    #menu-items-wrapper {
         border-radius: 6px !important; }
 
-    #message-box.note > div,
     #message-box-title,
     .title,
     #options-title {
@@ -63,8 +64,5 @@ url-prefix("chrome-extension://") {
 
     /* Options Border Removed */
     body {
-        border: 0px; !important}
-
-    /* Number on Left Side */
-    input[type="number"] {
-        text-align: left; !important} }
+        border: 0px;
+        !important } }
