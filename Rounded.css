@@ -2,38 +2,58 @@
 @name           Stylus - Rounded
 @author         Tsyron
 @namespace      https://github.com/Tsyron/Stylus-Theme
-@version        1.0.1
+@version        1.0.2
 @license        GPLv3
 @preprocessor   stylus
 
+@var            select select-font "Font" [
+                "Default",
+                "System",
+                "Monospace"]
+
 ==/UserStyle== */
+
 @-moz-document url-prefix("moz-extension://"),
 url-prefix("chrome-extension://") {
 
+    :root {
+        if select-font=="Default" {
+            --family: }
+
+        if select-font=="System" {
+            --family: system-ui; }
+            
+        if select-font=="Monospace" {
+            --family: Monospace; }}
+            
+    i=!important;
+    bdr=0.35em;
+    
     input,
     select,
     button,
     textarea,
     body,
+    checkbox,
     #help-popup,
     #stylus-popup,
     #message-box > div,
     #menu-items-wrapper {
-        border-radius: 6px !important; }
+        border-radius: bdr i; }
 
     #message-box-title,
     .title,
     #options-title {
-        border-radius: 6px 6px 0 0 !important; }
+        border-radius: bdr bdr 0 0 i; }
 
     #injection-order-button,
     .split-btn-pedal,
     #searchMode {
-        border-radius: 0 6px 6px 0 !important; }
+        border-radius: 0 bdr bdr 0 i; }
 
     #message-box-buttons,
     #options {
-        border-radius: 0 0 6px 6px !important; }
+        border-radius: 0 0 bdr bdr i; }
 
     #save-button,
     #manage-options-button,
@@ -41,28 +61,36 @@ url-prefix("chrome-extension://") {
     #search,
     #popup-manage-button,
     #find-styles-btn {
-        border-radius: 6px 0 0 6px !important; }
+        border-radius: bdr 0 0 bdr i; }
 
     /* Pop-up */
     .split-btn-menu {
-        border-radius: 6px !important;
+        border-radius: bdr i;
         background: #343434;
         border: 1px solid #666; }
 
     .split-btn-menu > :hover {
         background-color: hsla(180, 0%, 73%, .25); }
 
+    #stylus-popup {
+        width: 300px i; }
+
+    #options-btn.if-blocked {
+        max-width: 2.2em }
+
+    .split-btn.if-not-blocked {
+        padding-right: 50px }
+
     /* Seperator */
     #header-resizer {
-        border: none !important; }
+        border: none i; }
 
     #header {
-        box-shadow: none !important; }
+        box-shadow: none i; }
 
     #header-resizer::after {
-        border-right: none !important; }
+        border-right: none i; }
 
     /* Options Border Removed */
     body {
-        border: 0px;
-        !important } }
+        border: 0px i; } }
