@@ -2,9 +2,11 @@
 @name           Stylus - Rounded
 @author         Tsyron
 @namespace      https://github.com/Tsyron/Stylus-Theme
-@version        1.0.2
+@version        1.0.4
 @license        GPLv3
 @preprocessor   stylus
+
+@var            color color-accent "Accent Colour" #666
 
 @var            select select-font "Font" [
                 "Default",
@@ -12,9 +14,10 @@
                 "Monospace"]
 
 ==/UserStyle== */
-
 @-moz-document url-prefix("moz-extension://"),
-url-prefix("chrome-extension://") {
+url-prefix("chrome-extension://"),
+url-prefix("opera-extension://"),
+url-prefix("edge-extension://") {
 
     :root {
         if select-font=="Default" {
@@ -22,13 +25,14 @@ url-prefix("chrome-extension://") {
 
         if select-font=="System" {
             --family: system-ui; }
-            
+
         if select-font=="Monospace" {
-            --family: Monospace; }}
-            
-    i=!important;
-    bdr=0.35em;
-    
+            --family: Monospace; } }
+
+    bdr=0.35em
+    ac=color-accent
+    ac1=rgba(ac, 0.5)
+
     input,
     select,
     button,
@@ -38,22 +42,24 @@ url-prefix("chrome-extension://") {
     #help-popup,
     #stylus-popup,
     #message-box > div,
-    #menu-items-wrapper {
-        border-radius: bdr i; }
+    #menu-items-wrapper,
+    .blocked #popup-manage-button {
+        border-radius: bdr !important; }
 
+    #title,
     #message-box-title,
     .title,
     #options-title {
-        border-radius: bdr bdr 0 0 i; }
+        border-radius: bdr bdr 0 0 !important; }
 
     #injection-order-button,
     .split-btn-pedal,
     #searchMode {
-        border-radius: 0 bdr bdr 0 i; }
+        border-radius: 0 bdr bdr 0 !important; }
 
     #message-box-buttons,
     #options {
-        border-radius: 0 0 bdr bdr i; }
+        border-radius: 0 0 bdr bdr !important; }
 
     #save-button,
     #manage-options-button,
@@ -61,36 +67,34 @@ url-prefix("chrome-extension://") {
     #search,
     #popup-manage-button,
     #find-styles-btn {
-        border-radius: bdr 0 0 bdr i; }
+        border-radius: bdr 0 0 bdr !important; }
 
-    /* Pop-up */
+    @media (max-width: 850px) {
+        #save-button {
+            border-radius: bdr !important; } }
+
+    /* Little Menu */
     .split-btn-menu {
-        border-radius: bdr i;
-        background: #343434;
-        border: 1px solid #666; }
+        border-radius: bdr !important;
+        border: 1px solid ac; }
 
     .split-btn-menu > :hover {
         background-color: hsla(180, 0%, 73%, .25); }
 
+    /* Pop-up */
     #stylus-popup {
         width: 300px i; }
 
     #options-btn.if-blocked {
-        max-width: 2.2em }
+        max-width: 2.2em; }
 
-    .split-btn.if-not-blocked {
-        padding-right: 50px }
-
-    /* Seperator */
-    #header-resizer {
-        border: none i; }
-
-    #header {
-        box-shadow: none i; }
-
-    #header-resizer::after {
-        border-right: none i; }
-
-    /* Options Border Removed */
-    body {
-        border: 0px i; } }
+    /* Focus colour */
+    :focus,
+    .CodeMirror-focused,
+    textarea[data-focused-via-click]:focus,
+    input:not([type])[data-focused-via-click]:focus,
+    input[type="text"][data-focused-via-click]:focus,
+    input[type="url"][data-focused-via-click]:focus,
+    input[type="search"][data-focused-via-click]:focus,
+    input[type="number"][data-focused-via-click]:focus {
+        box-shadow: ac 0px 0px 0px 1px, ac1 0px 0px 3px; } }
