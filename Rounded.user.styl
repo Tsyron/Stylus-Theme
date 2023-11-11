@@ -2,11 +2,13 @@
 @name           Stylus - Rounded
 @author         Tsyron
 @namespace      https://github.com/Tsyron/Stylus-Theme
-@version        1.0.4
+@version        1.0.6
 @license        GPLv3
 @preprocessor   stylus
 
-@var            color color-accent "Accent Colour" #666
+@var            color color-accent "Accent Colour" #79d2d2
+
+@var            range range-corners "Corner Radius" [4, 0, 10, "px"]
 
 @var            select select-font "Font" [
                 "Default",
@@ -19,7 +21,24 @@ url-prefix("chrome-extension://"),
 url-prefix("opera-extension://"),
 url-prefix("edge-extension://") {
 
-    :root {
+    bdr=range-corners
+    ca1=color-accent
+    ca2a=desaturate(ca1, 8%)
+    ca2b=darken(ca2a, 38%)
+    ca3a=desaturate(ca1, 39.25%)
+    ca3b=darken(ca3a, 72%)
+    ca4=darken(ca1, 5%)
+    ca5=rgba(ca1, 0.5)
+    ca6a=rgba(ca1, 0.35)
+    ca6b=darken(ca6a, 23%)
+    ca6c=desaturate(ca6b, 30%)
+    ca7=rgba(ca1, 0.3)
+    ca8=rgba(ca1, 0.25)
+    ca9a=desaturate(ca1, 50%)
+    ca9b=darken(ca9a, 72%)
+
+    :root dark, [data-ui-theme="dark"] .slider {
+        
         if select-font=="Default" {
             --family: }
 
@@ -28,11 +47,14 @@ url-prefix("edge-extension://") {
 
         if select-font=="Monospace" {
             --family: Monospace; } }
-
-    bdr=0.35em
-    ac=color-accent
-    ac1=rgba(ac, 0.5)
-
+            
+    @media screen, dark {
+        :root, dark, [data-ui-theme="dark"] .slider {
+            --accent-1: ca1;
+            --accent-2: ca2b;
+            --accent-3: ca3b;
+            --color-on: ca7 !important; } }
+            
     input,
     select,
     button,
@@ -54,7 +76,8 @@ url-prefix("edge-extension://") {
 
     #injection-order-button,
     .split-btn-pedal,
-    #searchMode {
+    #searchMode,
+    select#manage\.searchMode {
         border-radius: 0 bdr bdr 0 !important; }
 
     #message-box-buttons,
@@ -69,21 +92,21 @@ url-prefix("edge-extension://") {
     #find-styles-btn {
         border-radius: bdr 0 0 bdr !important; }
 
-    @media (max-width: 850px) {
+    /*@media (max-width: 850px) {
         #save-button {
-            border-radius: bdr !important; } }
+            border-radius: bdr !important; } }*/
 
     /* Little Menu */
     .split-btn-menu {
         border-radius: bdr !important;
-        border: 1px solid ac; }
+        border: 1px solid ca1; }
 
     .split-btn-menu > :hover {
-        background-color: hsla(180, 0%, 73%, .25); }
+        background-color: ca8; }
 
     /* Pop-up */
     #stylus-popup {
-        width: 300px i; }
+        width: 270px !important; }
 
     #options-btn.if-blocked {
         max-width: 2.2em; }
@@ -97,4 +120,25 @@ url-prefix("edge-extension://") {
     input[type="url"][data-focused-via-click]:focus,
     input[type="search"][data-focused-via-click]:focus,
     input[type="number"][data-focused-via-click]:focus {
-        box-shadow: ac 0px 0px 0px 1px, ac1 0px 0px 3px; } }
+        box-shadow: ca1 0px 0px 0px 1px, ca5 0px 0px 3px; }
+    
+    /* Fixing margins */
+    #usw-publish-style {
+        margin: 0 .25rem 0 0; }
+        
+    /* UC Logo*/
+    .oldUI .disabled h2::after, .entry.usercss .style-name-link::after {
+        background-color: ca6c; }
+    
+    /* Filter selected colour */
+    .active #filters-stats {
+        background-color: var(--accent-2);
+        border-color: var(--accent-2); }
+        
+    /* Publish colour */
+    #publish[data-connected] summary::marker, #publish[data-connected] h2 {
+        color: var(--accent-1); }
+        
+    @media screen, dark {
+        .CodeMirror-activeline-background {
+            background: ca9b; } } }
