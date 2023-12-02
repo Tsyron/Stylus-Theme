@@ -2,19 +2,22 @@
 @name           Stylus - Rounded
 @author         Tsyron
 @namespace      https://github.com/Tsyron/Stylus-Theme
-@version        1.1.0
+@version        1.1.1
 @license        GPLv3
 @preprocessor   stylus
 
-@var            range range-corners-button "Buttons" [4, 0, 18, "px"]
+@var            range range-corners-button "Buttons" [6, 0, 18, "px"]
 
-@var            range range-corners-input-select "Input / Select" [4, 0, 10, "px"]
+@var            range range-corners-input-select "Input / Select" [6, 0, 10, "px"]
 
-@var            range range-corners-dialog "Dialog" [6, 0, 26, "px"]
+@var            range range-corners-checkbox "Checkbox" [4, 0, 6, "px"]
+
+@var            range range-corners-dialog "Dialog" [10, 0, 26, "px"]
 
 ==/UserStyle== */
 @-moz-document url-prefix("moz-extension://"),
 url-prefix("chrome-extension://"),
+url-prefix("brave-extension://"),
 url-prefix("opera-extension://"),
 url-prefix("edge-extension://") {
     
@@ -23,9 +26,12 @@ url-prefix("edge-extension://") {
     br2=range-corners-input-select
     
     br3=range-corners-dialog
+    
+    br4=range-corners-checkbox
 
     /* Button */
     button,
+    input[type="button"],
     .split-btn-menu,
     .blocked #popup-manage-button,
     #injection-order-button,
@@ -37,40 +43,48 @@ url-prefix("edge-extension://") {
     #save-button,
     #file-all-styles {
         border-radius: br1 0 0 br1 !important; }
-        
-    .split-btn-pedal {
+
+    .split-btn-pedal,
+    .test-regexp {
         border-radius: 0 br1 br1 0 !important; }
-            
-    /* Input / Select / CHeckbox */
+
+    /* Input / Select */
     input,
     select {
         border-radius: br2 !important; }
-        
+
     #search {
         border-radius: br2 0 0 br2 !important; }
-        
+
     #searchMode,
     select#manage\.searchMode {
         border-radius: 0 br2 br2 0 !important; }
-        
+
+    /* Checkbox */
+    input[type="checkbox"]:not(.slider) {
+        border-radius: br4 !important; }
+
     /* Dialog */
     #stylus-options,
     #help-popup,
-    #message-box > div {
+    #message-box > div,
+    .menu-items-wrapper,
+    #confirm div,
+    #menu div {
         border-radius: br3 !important; }
-    
+
     #message-box-buttons,
     #stylus-options footer {
         border-radius: 0 0 br3 br3 !important; }
-        
-    div#message-box-title, 
-    #stylus-options header  {
+
+    div#message-box-title,
+    #stylus-options header, #help-popup .title {
         border-radius: br3 br3 0 0 !important; }
 
     /* Little Menu */
     #options-btn.if-blocked {
         max-width: 2.2em; }
-    
+
     /* Fixing margins */
     #usw-publish-style {
         margin: 0 .25rem 0 0; }
