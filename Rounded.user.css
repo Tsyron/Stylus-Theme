@@ -2,7 +2,7 @@
 @name           Stylus - Rounded
 @author         Tsyron
 @namespace      https://github.com/Tsyron/Stylus-Theme
-@version        1.1.1
+@version        1.1.2
 @license        GPLv3
 @preprocessor   stylus
 
@@ -78,7 +78,8 @@ url-prefix("edge-extension://") {
         border-radius: 0 0 br3 br3 !important; }
 
     div#message-box-title,
-    #stylus-options header, #help-popup .title {
+    #stylus-options header, #help-popup .title, 
+    #menu header {
         border-radius: br3 br3 0 0 !important; }
 
     /* Little Menu */
