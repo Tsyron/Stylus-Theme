@@ -1,2 +1,2 @@
 # Stylus-Theme
-Cleaner Theme for extension Stylus
+Rounded Theme for extension Stylus
