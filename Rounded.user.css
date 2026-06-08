@@ -2,7 +2,7 @@
 @name           Stylus - Rounded
 @author         Tsyron
 @namespace      https://github.com/Tsyron/Stylus-Theme
-@version        1.1.2
+@version        1.1.4
 @license        GPLv3
 @preprocessor   stylus
 
@@ -13,6 +13,8 @@
 @var            range range-corners-checkbox "Checkbox" [4, 0, 6, "px"]
 
 @var            range range-corners-dialog "Dialog" [10, 0, 26, "px"]
+
+@var            range range-search-results "Search Result" [10, 0, 26, "px"]
 
 ==/UserStyle== */
 @-moz-document url-prefix("moz-extension://"),
@@ -28,6 +30,8 @@ url-prefix("edge-extension://") {
     br3=range-corners-dialog
     
     br4=range-corners-checkbox
+    
+    br5=range-search-results
 
     /* Button */
     button,
@@ -89,6 +93,14 @@ url-prefix("edge-extension://") {
     /* Fixing margins */
     #usw-publish-style {
         margin: 0 .25rem 0 0; }
+        
+    /* Search result */
+    .search-result {
+        border-radius: br5; }
+        
+    /* Color Picker */
+    #message-box .colorview-swatch, #message-box .colorview-swatch:after, #message-box .colorview-swatch:before, .color-swatch {
+        border-radius: br2; }
 
     /* Pop-up Width */
     /*#stylus-popup {
